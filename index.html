@@ -7,9 +7,308 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<style>
+    /* --------------------------------------------------------------
+       RESET & GENERAL STYLES
+    -------------------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #2e344e;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* --------------------------------------------------------------
+       NAVIGATION & HEADER
+    -------------------------------------------------------------- */
+    header {
+      background-color: rgb(0, 0, 0);
+      color: #fff;
+      position: sticky;
+      width: 100%;
+      padding: 2rem 1rem;
+      top: 0;
+      gap:5rem ;
+      height: 70px;
+
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap:2rem;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0 ;
+    }
+    nav ul {
+    display: flex;
+    gap: 0; /* Reduce this value for smaller spacing */
+    }
+
+    nav a {
+      background-color: transparent;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s linear;
+    }
+    nav a:hover {
+      background-color: #2c2c5b;
+    }
+    /* --------------------------------------------------------------
+       HERO / HOME SECTION
+    -------------------------------------------------------------- */
+    .hero {
+      position: relative;
+      background: url("nebula.png") no-repeat center center/cover;
+      height: 600px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .hero img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;          /* The image covers the container while preserving its aspect ratio */
+       display: block;             /* Removes default inline spacing */
+}
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px; 
+      padding: 20px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    /* --------------------------------------------------------------
+       SECTION BASE STYLES
+    -------------------------------------------------------------- */
+section {
+      background: #fff;
+      padding: 3rem 2rem; /* Ample padding inside sections */
+      margin: 0 auto; /* Space at bottom - adjust as desired */
+      max-width: 1264px;
+      border-radius: 1px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --------------------------------------------------------------
+       ARTICLE STYLES - FACTS, DISCOVERIES & MORE
+    -------------------------------------------------------------- */
+    article {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    article:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    article h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #2b4c53;
+    }
+        article h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #2b4c53;
+    }
+    article p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      text-align: justify;
+    }
+    article a.read-more {
+      display: inside;
+      background-color: #ffffff;
+      color: #000000;
+      padding: 0px 0px;
+      right: 50px;
+      font-weight: bold;
+    }
+    article a.read-more:hover {
+      background-color: #ffffff;
+    }
+    /* --------------------------------------------------------------
+       HISTORICAL, TUTORIAL & EXTRA CONTENT STYLES
+    -------------------------------------------------------------- */
+    .extra-content {
+      background-color: white ;
+      border: 1px dashed #444;
+      padding: 20px;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+    .extra-content h4 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    /* --------------------------------------------------------------
+       CONTACT FORM STYLES
+    -------------------------------------------------------------- */
+    .contact-form {
+      max-width: 700px;
+      margin: auto;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background-color: #333;
+      border: none;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form button:hover {
+      background-color: #575757;
+    }
+    
+    
+    /* --------------------------------------------------------------
+       FOOTER STYLES
+    -------------------------------------------------------------- */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+    }
+     /* Search Box Container */
+    .search-box {
+      position: absolute;
+      top: 20px; /* 20px from the top */
+     left: 200px; /* 20px from the right */
+    width: 180px; /* Or any desired width */
+
+    }
+
+    /* Style for the input field */
+    .search-input {
+      height: 30px;
+      width: 180px;
+      padding: 12px 45px 12px 15px;
+      font-size: 16px;
+      border: 1px solid #656565;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #000000;
+    }
+
+    .search-input:focus {
+      border-color: #333;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Style for the search button */
+    .search-button {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background: #333;
+      border: none;
+      color: #333;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s ease;
+    }
+
+    .search-button:hover {
+      background: #555;
+    }
+    /* --------------------------------------------------------------
+       RESPONSIVE DESIGN
+    -------------------------------------------------------------- */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      section {
+        padding: 40px 10px;
+      }
+    }
+    /* --------------------------------------------------------------
+       CSS ANIMATIONS
+    -------------------------------------------------------------- */
+    .fade-in {
+      opacity: 0;
+      animation: fadeInAppear 1s forwards;
+    }
+    @keyframes fadeInAppear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* --------------------------------------------------------------
+       SCROLL TO TOP BUTTON
+    -------------------------------------------------------------- */
+    #scrollToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ffffff;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+      transition: background-color 0.3s ease;
+    }
+    #scrollToTop:hover {
+      background-color: #575757;
+    }
+  </style>
+
 
 </head>
 <body>
+
     <div id="welcome">
         <h1>Welcome to the Universe!</h1>
         <h4>"The universe is a vast and mysterious place, full of 
@@ -19,61 +318,148 @@
         <button id="continue"> </button>
     </div>
     
-    <header id="main-header" class="hidden">
-         <h1>Explore Space</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#missions">Missions</a>
-            <a href="#future">Future</a>
-            <a href="#astronauts">Astronauts</a>
-            <a href="#technology">Technology</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
+    <header id="main-header" class="hidden">
+         <h2>Explore Space</h2>
+<nav>
+    <ul style="display: flex; justify-content: center; list-style: none; padding: 0; margin: 0;">
+      <li style="margin: 0;">
+        <a href="#missions" style="text-decoration: none; color: #fff; font-size: 16px;">Missions</a>
+      </li>
+      <li style="margin: 0;">
+        <a href="#future" style="text-decoration: none; color: #fff; font-size: 16px;">Future</a>
+      </li>
+      <li style="margin: 0;">
+        <a href="#astronaut" style="text-decoration: none; color: #fff; font-size: 16px;">Astronaut</a>
+      </li>
+      <li style="margin: 0;">
+        <a href="#technology" style="text-decoration: none; color: #fff; font-size: 16px;">Technology</a>
+      </li>
+      <li style="margin: 0;">
+        <a href="#gallery" style="text-decoration: none; color: #fff; font-size: 16px;">Gallary</a>
+      </li>
+      <li style="margin: 0;">
+        <a href="#news" style="text-decoration: none; color: #fff; font-size: 16px;">News</a>
+      </li>
+    </ul>
+
+<div class="search-box">
+  <input type="text" class="search-input" placeholder="Search...">
+  <button class="search-button" onclick="performSearch()">&#128269;</button>
+</div>
+
+<script>
+  function performSearch() {
+    const query = document.querySelector('.search-input').value;
+    if (query.trim() !== '') {
+      // Typically, this is where you’d integrate an API call or redirect logic.
+      alert("Searching for: " + query);
+    } else {
+      alert("Please enter a search term.");
+    }
+  }
+</script>
+  </nav>
+    </header>
+        <style>
+          .image-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+          }
+          .image-box img {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ff3d0036;
+            border-radius: 4px;
+            box-shadow: 4px 7px 7px 0px black;
+            cursor: pointer;
+            margin: 10px;
+            transition: 400ms;
+          }
+          .image-box img:hover  {
+            filter: grayscale(1);
+            transform: scale(1.03);
+          }
+
+        </style>
+        <div class="image-box">
+          <img src="nebula.png" alt="">
+          <img src="star1.jpg" alt="">
+          <img src="star2.jpg" alt="">
+        </div>
+      </style>
     <main class="hidden">
-        <section id="about">
-            <h2>About Space Exploration</h2>
-            <p>Humanity has always gazed at the stars with curiosity...</p>
-        </section>
+
 
         <section id="missions">
-            <h2>Famous Space Missions</h2>
-            <p>From Apollo to Voyager, our journey beyond Earth continues...</p>
+            <article class="fade-in visible" style="animation-delay: 0.3s;">
+              <p><h1>Famous Space Missions</h1></p>
+                <p><h3>A Brief History and Key Achievements</h3></p>
+                <p>1957: The Soviet Union launches Sputnik 1, the first artificial satellite.</p>
+                <div class="image-box">
+                  <img src="nebula.png" alt="">
+                  
+                  </div>
+                <a class="read-more" href="https://www.popularmechanics.com/space/g25941053/famous-space-missions-through-history/" target="_blank">Learn More →</a>
+            </article>
         </section>
 
         <section id="future">
             <h2>The Future of Space Travel</h2>
-            <p>Upcoming plans for Mars colonies, deep-space probes, and interstellar exploration...</p>
+            <article class="fade-in visible" style="animation-delay: 0.3s;">
+                <h3>A Brief History and Key Achievements</h3>
+                <p>1957: The Soviet Union launches Sputnik 1, the first artificial satellite.</p>
+                <a class="read-more" href="#!" onclick="alert('More details coming soon!')">Learn More →</a>
+            </article>
         </section>
 
-        <section id="astronauts">
+        <section id="astronaut">
             <h2>Meet the Astronauts</h2>
-            <p>Stories of pioneering astronauts who shaped space history...</p>
+            <article class="fade-in visible" style="animation-delay: 0.3s;">
+                <h3>A Brief History and Key Achievements</h3>
+                <p>1957: The Soviet Union launches Sputnik 1, the first artificial satellite.</p>
+                <a class="read-more" href="#!" onclick="alert('More details coming soon!')">Learn More →</a>
+            </article>
         </section>
 
         <section id="technology">
             <h2>Space Technology</h2>
-            <p>Advancements in spacecraft, satellites, and AI-driven space research...</p>
+            <article class="fade-in visible" style="animation-delay: 0.3s;">
+                <h3>A Brief History and Key Achievements</h3>
+                <p>1957: The Soviet Union launches Sputnik 1, the first artificial satellite.</p>
+                <a class="read-more" href="#!" onclick="alert('More details coming soon!')">Learn More →</a>
+            </article>
         </section>
 
         <section id="gallery">
             <h2>Space Gallery</h2>
+            <article class="fade-in visible" style="animation-delay: 0.3s;">
             <div class="image-container">
                 <img src="astronaut.png" alt="Astronaut">
                 <img src="planet1.png" alt="Planet">
                 <img src="nebula.png" alt="Nebula">
             </div>
+            <a class="read-more" href="#!" onclick="alert('More details coming soon!')">Learn More →</a>
+            </article>
         </section>
 
         <section id="news">
             <h2>Latest Space News</h2>
+            <article class="fade-in visible" style="animation-delay: 0.3s;">
             <div id="news-container">
                 <p>Loading latest space news...</p>
+                
             </div>
         </section>
+        <section class="planet-section">
+        <h1>Explore Planets with NASA Data</h1>
+        <div class="planet-container" id="planet-data">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
@@ -88,7 +474,6 @@
             </form>
         </section>
     </main>
-
     <footer class="hidden">
         <p>© 2025 Space Exploration</p>
     </footer>
